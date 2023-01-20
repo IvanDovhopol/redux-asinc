@@ -8,26 +8,21 @@ export const tasksSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-    fetchingInProgress(state) {
+
+  extraReducers: {
+    [fetchTasks.pending](state, action) {
       state.isLoading = true;
     },
-    fetchingSuccess(state, action) {
+    [fetchTasks.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
-    fetchingError(state, action) {
+    [fetchTasks.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
   },
-  extraReducers: {
-    [fetchTasks.pending](state, action) {},
-    [fetchTasks.fulfilled](state, action) {},
-    [fetchTasks.rejected](state, action) {},
-  },
 });
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError } = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

@@ -14,7 +14,7 @@ export const App = () => {
   return (
     <div>
       {isLoading && <b>Loading page ...</b>}
-      {error && <b>error</b>}
+      {error && <b>{error}</b>}
       {items.length > 0 && JSON.stringify(items, null, 2)}
     </div>
   );
